@@ -11,6 +11,7 @@
 		3805FECD2B75099400719E20 /* ContactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FECC2B75099400719E20 /* ContactsModel.swift */; };
 		3805FECF2B79FE3A00719E20 /* GroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FECE2B79FE3A00719E20 /* GroupsModel.swift */; };
 		3805FED12B7A0B4F00719E20 /* PhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FED02B7A0B4F00719E20 /* PhotosModel.swift */; };
+		3805FED52B7A26AA00719E20 /* FriendPersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FED42B7A26AA00719E20 /* FriendPersonModel.swift */; };
 		38BA66592B68D5F8006F39A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA66582B68D5F8006F39A0 /* AppDelegate.swift */; };
 		38BA665B2B68D5F8006F39A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA665A2B68D5F8006F39A0 /* SceneDelegate.swift */; };
 		38BA665D2B68D5F8006F39A0 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA665C2B68D5F8006F39A0 /* AuthView.swift */; };
@@ -34,6 +35,7 @@
 		3805FECC2B75099400719E20 /* ContactsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsModel.swift; sourceTree = "<group>"; };
 		3805FECE2B79FE3A00719E20 /* GroupsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsModel.swift; sourceTree = "<group>"; };
 		3805FED02B7A0B4F00719E20 /* PhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModel.swift; sourceTree = "<group>"; };
+		3805FED42B7A26AA00719E20 /* FriendPersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPersonModel.swift; sourceTree = "<group>"; };
 		38BA66552B68D5F8006F39A0 /* pr1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pr1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38BA66582B68D5F8006F39A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38BA665A2B68D5F8006F39A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3805FED22B7A267E00719E20 /* NetwModels */ = {
+			isa = PBXGroup;
+			children = (
+				38BA66C42B6D0216006F39A0 /* RickNetwModel.swift */,
+				3805FECC2B75099400719E20 /* ContactsModel.swift */,
+				3805FECE2B79FE3A00719E20 /* GroupsModel.swift */,
+				3805FED02B7A0B4F00719E20 /* PhotosModel.swift */,
+			);
+			path = NetwModels;
+			sourceTree = "<group>";
+		};
+		3805FED32B7A268600719E20 /* UserModels */ = {
+			isa = PBXGroup;
+			children = (
+				3805FED42B7A26AA00719E20 /* FriendPersonModel.swift */,
+				3805FE872B73A74400719E20 /* CurrentUser.swift */,
+			);
+			path = UserModels;
+			sourceTree = "<group>";
+		};
 		38BA664C2B68D5F8006F39A0 = {
 			isa = PBXGroup;
 			children = (
@@ -139,11 +161,8 @@
 		38BA66C32B6D020A006F39A0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				38BA66C42B6D0216006F39A0 /* RickNetwModel.swift */,
-				3805FE872B73A74400719E20 /* CurrentUser.swift */,
-				3805FECC2B75099400719E20 /* ContactsModel.swift */,
-				3805FECE2B79FE3A00719E20 /* GroupsModel.swift */,
-				3805FED02B7A0B4F00719E20 /* PhotosModel.swift */,
+				3805FED32B7A268600719E20 /* UserModels */,
+				3805FED22B7A267E00719E20 /* NetwModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -228,6 +247,7 @@
 				38BA66C02B6CFC60006F39A0 /* NetworkManager.swift in Sources */,
 				38BA66B82B6CDB0A006F39A0 /* CustomTabBar.swift in Sources */,
 				38BA66BC2B6CDC9A006F39A0 /* GroupsTableVCTableViewController.swift in Sources */,
+				3805FED52B7A26AA00719E20 /* FriendPersonModel.swift in Sources */,
 				38BA66B42B6CD2D8006F39A0 /* PhotosCollectionViewController.swift in Sources */,
 				38BA66B02B6CBD7A006F39A0 /* FriendsCellPrototype.swift in Sources */,
 				3805FECD2B75099400719E20 /* ContactsModel.swift in Sources */,

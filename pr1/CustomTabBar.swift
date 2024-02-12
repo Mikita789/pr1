@@ -22,10 +22,6 @@ final class CustomTabBar: UITabBarController {
         super.viewDidLoad()
         createBaseTabBar()
         setStyleTabBar()
-        
-        print("\(VKEndPoints.getContacts.getURL(token: "YOUR_TOKKEN", id: "YOUR_ID")) FOR CONTACTS")
-        print("\(VKEndPoints.getGroups.getURL(token: "YOUR_TOKKEN", id: "YOUR_ID")) FOR GROUPS")
-        print("\(VKEndPoints.getPhotos.getURL(token: "YOUR_TOKKEN", id: "YOUR_ID")) FOR PHOTOS")
     }
     
     private func createBaseTabBar(){

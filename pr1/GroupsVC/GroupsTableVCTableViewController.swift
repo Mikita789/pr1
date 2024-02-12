@@ -10,6 +10,7 @@ import UIKit
 final class GroupsTableVCTableViewController: UITableViewController {
     var currentUser: CurrentUser?
     private var nw = NetworkManager()
+    private var groupsArr: [ItemGR] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +23,10 @@ final class GroupsTableVCTableViewController: UITableViewController {
     //MARK: - print all groups
     private func printAllGroups(){
         if let currentUser = currentUser{
-            nw.getAllGroups(currentUser.token, currentUser.id) { res in
-                for gr in res.response.items{
-                    print("\(gr.name)")
+            nw.getAllGroups(currentUser.token, currentUser.id) { [weak self] res in
+                self?.groupsArr = res.response.items
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
                 }
             }
         }
@@ -37,13 +39,18 @@ final class GroupsTableVCTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return groupsArr.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupsCell", for: indexPath) as? GroupsTableViewCell else { return UITableViewCell()}
         
-        cell.setContent(image: UIImage(systemName: "person"), title: "Some Title", descr: "Long text")
+        let currentItem = groupsArr[indexPath.row]
+        nw.loadImage(currentItem.photo100) { [weak self] image in
+            DispatchQueue.main.async {
+                cell.setContent(image: image , title: currentItem.name, descr: currentItem.description)
+            }
+        }
         
         return cell
     }

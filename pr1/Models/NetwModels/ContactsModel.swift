@@ -23,6 +23,8 @@ struct Item: Codable {
     let id: Int
     let nickname, trackCode, firstName, lastName: String
     let canAccessClosed, isClosed: Bool
+    let photo100: String
+    let online: Int
 
     enum CodingKeys: String, CodingKey {
         case id, nickname
@@ -31,6 +33,8 @@ struct Item: Codable {
         case lastName = "last_name"
         case canAccessClosed = "can_access_closed"
         case isClosed = "is_closed"
+        case photo100 = "photo_100"
+        case online
     }
 }
 

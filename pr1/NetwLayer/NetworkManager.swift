@@ -67,7 +67,7 @@ class NetworkManager{
     // MARK: - fetch contacts
     func getContact(_ token: String, _ userID: String, result: @escaping (Contacts)->()){
         guard let url = VKEndPoints.getContacts.getURL(token: token, id: userID) else { return }
-        
+        print(url)
         URLSession.shared.dataTask(with: url) { data, resp, err in
             if err == nil{
                 guard let data = data else { return }
@@ -94,7 +94,7 @@ class NetworkManager{
     // MARK: - fetch photos
     func getAllphotoUser(_ token: String, _ userID: String, result: @escaping (Photos)->()){
         guard let url = VKEndPoints.getPhotos.getURL(token: token, id: userID) else { return }
-
+        print(url)
         URLSession.shared.dataTask(with: url) { data, resp, err in
             guard err == nil else { return }
             guard let data = data else { return }

@@ -49,13 +49,13 @@ enum VKEndPoints: String{
             param = [ URLQueryItem(name: "access_token", value: token),
                       URLQueryItem(name: "user_id", value: id),
                       URLQueryItem(name: "extended", value: "1"),
-                      URLQueryItem(name: "fields", value: "name,type,photo_50,description")
+                      URLQueryItem(name: "fields", value: "name,type,photo_100,description")
             ]
         case .getContacts:
             param = [ URLQueryItem(name: "access_token", value: token),
                       URLQueryItem(name: "user_id", value: id),
                       URLQueryItem(name: "order", value: "hints"),
-                      URLQueryItem(name: "fields", value: "nickname")
+                      URLQueryItem(name: "fields", value: "nickname,online,photo_100")
             ]
         }
         param.append(URLQueryItem(name: "v", value: "5.199"))

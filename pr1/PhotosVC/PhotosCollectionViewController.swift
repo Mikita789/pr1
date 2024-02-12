@@ -10,26 +10,15 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 final class PhotosCollectionViewController: UICollectionViewController {
-    private var imagePers:[UIImage] = []
     private var nw = NetworkManager()
+    private var photoURLArr : [String?] = []
     var currentUser:CurrentUser?
     
     
     override func loadView() {
         super.loadView()
         addLayout()
-        nw.getDataRickAndMorty(arrPers: nw.getArrPersID(6)) { [ weak self ] res in
-            guard let res = res else { return }
-            res.map{
-                self?.nw.loadImage($0.image) { im in
-                    self?.imagePers.append(im)
-                    DispatchQueue.main.async{
-                        self?.collectionView.reloadData()
-                    }
-                }
-            }
-            
-        }
+        
     }
     
     override func viewDidLoad() {
@@ -45,12 +34,11 @@ final class PhotosCollectionViewController: UICollectionViewController {
     private func printAllPhoto(){
         if let currentUser = currentUser{
             nw.getAllphotoUser(currentUser.token, currentUser.id) { res in
-                for ph in res.response.items{
-                    print(ph.sizes.first?.url ?? "no url")
+                self.photoURLArr = res.response.items.map{ $0.sizes.filter{$0.type == "y"}.map{$0.url}.first }
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
                 }
             }
-        }else {
-            print("no current user")
         }
     }
     
@@ -75,14 +63,16 @@ final class PhotosCollectionViewController: UICollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imagePers.count
+        return photoURLArr.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as? PrototypeCollectionViewCell else { return UICollectionViewCell()}
-        let currentImage = imagePers[indexPath.item]
-        DispatchQueue.main.async{
-            cell.setContent(currentImage)
+        let currentImage = photoURLArr[indexPath.row]
+        nw.loadImage(currentImage) { [weak self] image in
+            DispatchQueue.main.async {
+                cell.setContent(image)
+            }
         }
         
         return cell

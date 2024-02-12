@@ -10,19 +10,21 @@ import UIKit
 final class FriendsTableViewController: UITableViewController {
     var data: [RickNetwModel] = []
     let nw = NetworkManager()
+    
+    var friendsArr: [FriendPersonModel] = []
     var currentUser: CurrentUser?
     
     override func loadView() {
         super.loadView()
-        
-        self.nw.getDataRickAndMorty(arrPers: nw.getArrPersID(5)){ [weak self] res in
-            guard let res = res else { return }
-            self?.data = res
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+        if let currentUser = currentUser{
+            self.nw.getContact(currentUser.token , currentUser.id) { [weak self] res in
+                self?.friendsArr = res.response.items.map{FriendPersonModel($0)}
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
             }
+            
         }
-        
     }
     
     override func viewDidLoad() {
@@ -52,7 +54,7 @@ final class FriendsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return friendsArr.count
         
     }
     
@@ -60,10 +62,10 @@ final class FriendsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellPrototype", for: indexPath) as? FriendsCellPrototype else { return UITableViewCell()}
         
-        let currentPers = data[indexPath.row]
-        self.nw.loadImage(currentPers.image) { [weak self] res in
+        let currentPers = friendsArr[indexPath.row]
+        self.nw.loadImage(currentPers.photo100) { [weak self] image in
             DispatchQueue.main.async {
-                cell.setContent(image: res, name: currentPers.name)
+                cell.setContent(image: image, name: "\(currentPers.firstName) \(currentPers.lastName)", isOnline: currentPers.online)
             }
         }
         
