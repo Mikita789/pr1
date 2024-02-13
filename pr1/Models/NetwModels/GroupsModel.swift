@@ -21,7 +21,8 @@ struct ResponseGR: Codable {
 // MARK: - Item
 struct ItemGR: Codable {
     let id: Int
-    let description, name, screenName: String
+    let description: String?
+    let name, screenName: String
     let isClosed: Int
     let type: String
     let photo100: String

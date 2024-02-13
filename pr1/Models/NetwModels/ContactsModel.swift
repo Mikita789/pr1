@@ -21,7 +21,8 @@ struct Response: Codable {
 // MARK: - Item
 struct Item: Codable {
     let id: Int
-    let nickname, trackCode, firstName, lastName: String
+    let nickname: String?
+    let trackCode, firstName, lastName: String
     let canAccessClosed, isClosed: Bool
     let photo100: String
     let online: Int

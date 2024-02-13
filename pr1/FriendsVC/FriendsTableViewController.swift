@@ -17,7 +17,7 @@ final class FriendsTableViewController: UITableViewController {
     override func loadView() {
         super.loadView()
         if let currentUser = currentUser{
-            self.nw.getContact(currentUser.token , currentUser.id) { [weak self] res in
+            nw.getContact(currentUser.token , currentUser.id) { [weak self] res in
                 self?.friendsArr = res.response.items.map{FriendPersonModel($0)}
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
@@ -63,9 +63,9 @@ final class FriendsTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellPrototype", for: indexPath) as? FriendsCellPrototype else { return UITableViewCell()}
         
         let currentPers = friendsArr[indexPath.row]
-        self.nw.loadImage(currentPers.photo100) { [weak self] image in
+        nw.loadImage(currentPers.photo100) { [weak cell] image in
             DispatchQueue.main.async {
-                cell.setContent(image: image, name: "\(currentPers.firstName) \(currentPers.lastName)", isOnline: currentPers.online)
+                cell?.setContent(image: image, name: "\(currentPers.firstName) \(currentPers.lastName)", isOnline: currentPers.online)
             }
         }
         

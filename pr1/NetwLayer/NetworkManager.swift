@@ -37,7 +37,7 @@ class NetworkManager{
         urlStr += "\(arrPers)"
         guard let url = URL(string: urlStr) else { return }
         let _ = URLSession.shared.dataTask(with: url) { data, resp, err in
-            if let err = err{
+            if err != nil{
                 print("DEBUG: - Error URLSession")
             }else{
                 guard let data = data else { return }

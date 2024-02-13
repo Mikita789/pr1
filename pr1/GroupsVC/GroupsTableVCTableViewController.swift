@@ -46,9 +46,9 @@ final class GroupsTableVCTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupsCell", for: indexPath) as? GroupsTableViewCell else { return UITableViewCell()}
         
         let currentItem = groupsArr[indexPath.row]
-        nw.loadImage(currentItem.photo100) { [weak self] image in
+        nw.loadImage(currentItem.photo100) { [weak cell] image in
             DispatchQueue.main.async {
-                cell.setContent(image: image , title: currentItem.name, descr: currentItem.description)
+                cell?.setContent(image: image , title: currentItem.name, descr: currentItem.description ?? "")
             }
         }
         

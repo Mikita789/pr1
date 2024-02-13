@@ -15,7 +15,7 @@ struct FriendPersonModel{
     
     init(_ netwModel: Item){
         self.id = netwModel.id
-        self.nickname = netwModel.nickname
+        self.nickname = netwModel.nickname ?? ""
         self.firstName = netwModel.firstName
         self.lastName = netwModel.lastName
         self.photo100 = netwModel.photo100

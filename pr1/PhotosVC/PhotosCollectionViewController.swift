@@ -34,10 +34,18 @@ final class PhotosCollectionViewController: UICollectionViewController {
     private func printAllPhoto(){
         if let currentUser = currentUser{
             nw.getAllphotoUser(currentUser.token, currentUser.id) { res in
-                self.photoURLArr = res.response.items.map{ $0.sizes.filter{$0.type == "y"}.map{$0.url}.first }
+                for item in res.response.items{
+                    let y = item.sizes.filter{$0.type == "x"}
+                    self.photoURLArr.append(y.first?.url)
+                }
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
+                
+//                self.photoURLArr = res.response.items.map{ $0.sizes.filter{$0.type == "y"}.map{$0.url}.first }
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
             }
         }
     }
@@ -69,9 +77,9 @@ final class PhotosCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as? PrototypeCollectionViewCell else { return UICollectionViewCell()}
         let currentImage = photoURLArr[indexPath.row]
-        nw.loadImage(currentImage) { [weak self] image in
+        nw.loadImage(currentImage) { [weak cell] image in
             DispatchQueue.main.async {
-                cell.setContent(image)
+                cell?.setContent(image)
             }
         }
         
