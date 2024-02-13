@@ -41,11 +41,6 @@ final class PhotosCollectionViewController: UICollectionViewController {
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
-                
-//                self.photoURLArr = res.response.items.map{ $0.sizes.filter{$0.type == "y"}.map{$0.url}.first }
-//                DispatchQueue.main.async {
-//                    self.collectionView.reloadData()
-//                }
             }
         }
     }
@@ -60,15 +55,12 @@ final class PhotosCollectionViewController: UICollectionViewController {
         collView.dataSource = self
         self.collectionView = collView
     }
-    
-    
-    
+
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoURLArr.count

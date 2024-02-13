@@ -44,6 +44,7 @@ final class FriendsCellPrototype: UITableViewCell {
             avatar.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
+    
     private func calculateFrameImage(){
         avatar.layer.cornerRadius = avatar.bounds.height / 2
         avatar.contentMode = .scaleAspectFill

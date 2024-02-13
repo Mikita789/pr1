@@ -41,6 +41,7 @@ final class GroupsTableViewCell: UITableViewCell {
             groupIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
+    
     private func calculateFrameImage(){
         groupIcon.layer.cornerRadius = groupIcon.bounds.height / 2
         groupIcon.contentMode = .scaleAspectFill
@@ -76,5 +77,4 @@ final class GroupsTableViewCell: UITableViewCell {
         groupDescription.textAlignment = .left
         groupDescription.numberOfLines = 1
     }
-    
 }
