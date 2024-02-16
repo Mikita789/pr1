@@ -19,11 +19,6 @@ final class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         createImageView()
         createNameLabel()
-        
-        self.profileImage.layer.shadowColor = UIColor.red.cgColor
-        self.profileImage.layer.shadowOpacity = 0.8
-        self.profileImage.layer.shadowRadius = 10
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,7 +40,6 @@ final class ProfileViewController: UIViewController {
                     self?.profileImage.image = image
                     self?.profileImage.clipsToBounds = true
                     self?.profileImage.layer.cornerRadius = 30
-                    self?.profileImage.layer.masksToBounds = false
                 }
             }
         }
@@ -73,10 +67,6 @@ final class ProfileViewController: UIViewController {
         nameLabel.textColor = .white
         nameLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
         nameLabel.textAlignment = .center
-        nameLabel.layer.masksToBounds = false
-        nameLabel.layer.shadowOpacity = 1
-        nameLabel.layer.shadowColor = UIColor.red.cgColor
-        nameLabel.layer.shadowRadius = 10
     }
 
 }

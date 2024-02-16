@@ -91,6 +91,14 @@
 			path = UserModels;
 			sourceTree = "<group>";
 		};
+		3805FF0E2B7F41CD00719E20 /* ProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				3805FF0A2B7DEB9700719E20 /* ProfileViewController.swift */,
+			);
+			path = ProfileVC;
+			sourceTree = "<group>";
+		};
 		38BA664C2B68D5F8006F39A0 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +125,7 @@
 				38BA665C2B68D5F8006F39A0 /* AuthView.swift */,
 				3805FECB2B75043F00719E20 /* MyPlayground.playground */,
 				38BA66BA2B6CDC6F006F39A0 /* FriendsVC */,
+				3805FF0E2B7F41CD00719E20 /* ProfileVC */,
 				38BA66B92B6CDC53006F39A0 /* PhotosVC */,
 				38BA66BD2B6CDC9F006F39A0 /* GroupsVC */,
 				38BA66632B68D5FA006F39A0 /* LaunchScreen.storyboard */,
@@ -141,7 +150,6 @@
 			children = (
 				38BA66AD2B6CBCF3006F39A0 /* FriendsTableViewController.swift */,
 				38BA66AF2B6CBD7A006F39A0 /* FriendsCellPrototype.swift */,
-				3805FF0A2B7DEB9700719E20 /* ProfileViewController.swift */,
 			);
 			path = FriendsVC;
 			sourceTree = "<group>";
