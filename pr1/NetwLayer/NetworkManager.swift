@@ -102,6 +102,19 @@ class NetworkManager{
             result(res)
         }.resume()
     }
+    
+    func getCurrentProfileInfo(_ token: String, _ userID: String, result: @escaping (ProfileInfo)->()) {
+        guard let url = VKEndPoints.getProfileInfo.getURL(token: token, id: userID) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, resp, err in
+            if err == nil{
+                guard let data = data else { return }
+                guard let res = self.parseVKRes(data, to: ProfileInfo.self) else { return }
+                result(res)
+            }
+        }.resume()
+        print(url)
+    }
 
 }
 

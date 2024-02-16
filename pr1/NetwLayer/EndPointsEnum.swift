@@ -30,6 +30,7 @@ enum VKEndPoints: String{
     case getPhotos = "photos.get"
     case getGroups = "groups.get"
     case getContacts = "friends.get"
+    case getProfileInfo = "account.getProfileInfo"
     
     func getURL(token: String, id: String)->URL?{
         var components = URLComponents()
@@ -57,7 +58,10 @@ enum VKEndPoints: String{
                       URLQueryItem(name: "order", value: "hints"),
                       URLQueryItem(name: "fields", value: "nickname,online,photo_100")
             ]
+        case .getProfileInfo:
+            param = [URLQueryItem(name: "access_token", value: token)]
         }
+        
         param.append(URLQueryItem(name: "v", value: "5.199"))
         components.queryItems = param
         

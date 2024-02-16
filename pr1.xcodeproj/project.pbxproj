@@ -12,6 +12,8 @@
 		3805FECF2B79FE3A00719E20 /* GroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FECE2B79FE3A00719E20 /* GroupsModel.swift */; };
 		3805FED12B7A0B4F00719E20 /* PhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FED02B7A0B4F00719E20 /* PhotosModel.swift */; };
 		3805FED52B7A26AA00719E20 /* FriendPersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FED42B7A26AA00719E20 /* FriendPersonModel.swift */; };
+		3805FF0B2B7DEB9700719E20 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF0A2B7DEB9700719E20 /* ProfileViewController.swift */; };
+		3805FF0D2B7DF3C400719E20 /* ProfileInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF0C2B7DF3C400719E20 /* ProfileInfoModel.swift */; };
 		38BA66592B68D5F8006F39A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA66582B68D5F8006F39A0 /* AppDelegate.swift */; };
 		38BA665B2B68D5F8006F39A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA665A2B68D5F8006F39A0 /* SceneDelegate.swift */; };
 		38BA665D2B68D5F8006F39A0 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA665C2B68D5F8006F39A0 /* AuthView.swift */; };
@@ -36,6 +38,8 @@
 		3805FECE2B79FE3A00719E20 /* GroupsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsModel.swift; sourceTree = "<group>"; };
 		3805FED02B7A0B4F00719E20 /* PhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModel.swift; sourceTree = "<group>"; };
 		3805FED42B7A26AA00719E20 /* FriendPersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPersonModel.swift; sourceTree = "<group>"; };
+		3805FF0A2B7DEB9700719E20 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3805FF0C2B7DF3C400719E20 /* ProfileInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoModel.swift; sourceTree = "<group>"; };
 		38BA66552B68D5F8006F39A0 /* pr1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pr1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38BA66582B68D5F8006F39A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38BA665A2B68D5F8006F39A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 				3805FECC2B75099400719E20 /* ContactsModel.swift */,
 				3805FECE2B79FE3A00719E20 /* GroupsModel.swift */,
 				3805FED02B7A0B4F00719E20 /* PhotosModel.swift */,
+				3805FF0C2B7DF3C400719E20 /* ProfileInfoModel.swift */,
 			);
 			path = NetwModels;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			children = (
 				38BA66AD2B6CBCF3006F39A0 /* FriendsTableViewController.swift */,
 				38BA66AF2B6CBD7A006F39A0 /* FriendsCellPrototype.swift */,
+				3805FF0A2B7DEB9700719E20 /* ProfileViewController.swift */,
 			);
 			path = FriendsVC;
 			sourceTree = "<group>";
@@ -246,6 +252,7 @@
 				38BA66B62B6CD792006F39A0 /* PrototypeCollectionViewCell.swift in Sources */,
 				38BA66C02B6CFC60006F39A0 /* NetworkManager.swift in Sources */,
 				38BA66B82B6CDB0A006F39A0 /* CustomTabBar.swift in Sources */,
+				3805FF0B2B7DEB9700719E20 /* ProfileViewController.swift in Sources */,
 				38BA66BC2B6CDC9A006F39A0 /* GroupsTableVCTableViewController.swift in Sources */,
 				3805FED52B7A26AA00719E20 /* FriendPersonModel.swift in Sources */,
 				38BA66B42B6CD2D8006F39A0 /* PhotosCollectionViewController.swift in Sources */,
@@ -255,6 +262,7 @@
 				3805FECF2B79FE3A00719E20 /* GroupsModel.swift in Sources */,
 				3805FE882B73A74400719E20 /* CurrentUser.swift in Sources */,
 				38BA665B2B68D5F8006F39A0 /* SceneDelegate.swift in Sources */,
+				3805FF0D2B7DF3C400719E20 /* ProfileInfoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
