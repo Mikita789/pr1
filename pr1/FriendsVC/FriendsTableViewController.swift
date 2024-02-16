@@ -116,7 +116,7 @@ final class FriendsTableViewController: UITableViewController {
     @objc func pushToProfile(){
         let vc = ProfileViewController()
         vc.currentUserInfo = self.currentInfoItem
-        
+        vc.modalTransitionStyle = .flipHorizontal
         self.present(vc, animated: true)
     }
 }
