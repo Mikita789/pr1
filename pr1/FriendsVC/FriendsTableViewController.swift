@@ -34,34 +34,34 @@ final class FriendsTableViewController: UITableViewController {
         self.title = "Contacts"
         navigationController?.navigationBar.prefersLargeTitles = true
         printAllContacts()
-        addProfileButton()
+        //addProfileButton()
     }
     
     //MARK: - add button profile to navigation bar
     
-    private func addProfileButton(){
-        if let currentUser = currentUser{
-            nw.getCurrentProfileInfo(currentUser.token, currentUser.id) { [weak self] info in
-                self?.currentInfoItem = info
-                self?.nw.loadImage(info.response.photo200) { image in
-                    DispatchQueue.main.async{
-                        let image = self?.resizeImage(image: image, targetSize: CGSize(width: 40, height: 40))
-                        let button = UIButton(type: .custom)
-                        button.clipsToBounds = true
-                        button.contentMode = .scaleAspectFit
-                        button.layer.cornerRadius = 40 / 2
-                        button.setBackgroundImage(image, for: .normal)
-                        button.addTarget(self, action: #selector(self?.pushToProfile), for: .touchUpInside)
-                        self?.navigationItem.rightBarButtonItem =  UIBarButtonItem(customView: button)
-                    }
-                }
-            }
-        }else{
-            let navBarItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(pushToProfile))
-            navBarItem.tintColor = .black
-            navigationItem.rightBarButtonItem = navBarItem
-        }
-    }
+//    private func addProfileButton(){
+//        if let currentUser = currentUser{
+//            nw.getCurrentProfileInfo(currentUser.token, currentUser.id) { [weak self] info in
+//                self?.currentInfoItem = info
+//                self?.nw.loadImage(info.response.photo200) { image in
+//                    DispatchQueue.main.async{
+//                        let image = self?.resizeImage(image: image, targetSize: CGSize(width: 40, height: 40))
+//                        let button = UIButton(type: .custom)
+//                        button.clipsToBounds = true
+//                        button.contentMode = .scaleAspectFit
+//                        button.layer.cornerRadius = 40 / 2
+//                        button.setBackgroundImage(image, for: .normal)
+//                        button.addTarget(self, action: #selector(self?.pushToProfile), for: .touchUpInside)
+//                        self?.navigationItem.rightBarButtonItem =  UIBarButtonItem(customView: button)
+//                    }
+//                }
+//            }
+//        }else{
+//            let navBarItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(pushToProfile))
+//            navBarItem.tintColor = .black
+//            navigationItem.rightBarButtonItem = navBarItem
+//        }
+//    }
     // MARK: - Set Image size
     private func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage? {
         let renderer = UIGraphicsImageRenderer(size: targetSize)
@@ -113,10 +113,10 @@ final class FriendsTableViewController: UITableViewController {
         return view.bounds.height * 0.1
     }
     
-    @objc func pushToProfile(){
-        let vc = ProfileViewController()
-        vc.currentUserInfo = self.currentInfoItem
-        vc.modalTransitionStyle = .flipHorizontal
-        self.present(vc, animated: true)
-    }
+//    @objc func pushToProfile(){
+//        let vc = ProfileViewController()
+//        vc.currentUserInfo = self.currentInfoItem
+//        vc.modalTransitionStyle = .flipHorizontal
+//        self.present(vc, animated: true)
+//    }
 }
