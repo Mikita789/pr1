@@ -31,7 +31,7 @@ enum VKEndPoints: String{
     case getGroups = "groups.get"
     case getContacts = "friends.get"
     case getProfileInfo = "account.getProfileInfo"
-    
+    //https://api.vk.ru/method/photos.get?access_token=token&owner_id=id&album_id=profile
     func getURL(token: String, id: String)->URL?{
         var components = URLComponents()
         components.scheme = "https"
