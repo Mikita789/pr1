@@ -10,9 +10,18 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 final class PhotosCollectionViewController: UICollectionViewController {
-    private var nw = NetworkManager()
+    var nw: NetwProtocolPhotos
     private var photoURLArr : [String?] = []
     var currentUser:CurrentUser?
+    
+    init(nwm: NetwProtocolPhotos){
+        self.nw = nwm
+        super .init(collectionViewLayout: UICollectionViewLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     override func loadView() {

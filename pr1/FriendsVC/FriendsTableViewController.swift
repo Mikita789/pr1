@@ -10,8 +10,17 @@ import UIKit
 final class FriendsTableViewController: UITableViewController {
     private var rc = UIRefreshControl()
     private var data: [RickNetwModel] = []
-    private let nw = NetworkManager()
+    let nw: NetwProtocolContacts
 
+    
+    init(nwm: NetwProtocolContacts){
+        self.nw = nwm
+        super .init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private var friendsArr: [FriendPersonModel] = []{
         didSet{
@@ -116,13 +125,13 @@ final class FriendsTableViewController: UITableViewController {
         if friendsArr.count == 0{
             let currentPers = friendsData[indexPath.row]
             let model = ProfileInfo(response: ResponseProfile(id: Int.random(in: 0...100), homeTown: nil, status: nil, photo200: "", isServiceAccount: false, bdate: nil, verificationStatus: nil, firstName: String(currentPers.fullName?.split(separator: " ")[0] ?? ""), lastName: String(currentPers.fullName?.split(separator: " ")[1] ?? ""), bdateVisibility: 1, phone: nil, relation: nil, sex: nil))
-            let vc = ProfileViewController(isContactProfile: true)
+            let vc = ProfileViewController(isContactProfile: true, nwm: NetworkManager())
             vc.currentUserInfo = model
             present(vc, animated: true)
         }else{
             let currentPers = friendsArr[indexPath.row]
             let model = ProfileInfo(response: ResponseProfile(id: Int.random(in: 0...100), homeTown: nil, status: nil, photo200: currentPers.photo100, isServiceAccount: false, bdate: nil, verificationStatus: nil, firstName: currentPers.firstName, lastName: currentPers.lastName, bdateVisibility: 1, phone: nil, relation: nil, sex: nil))
-            let vc = ProfileViewController(isContactProfile: true)
+            let vc = ProfileViewController(isContactProfile: true, nwm: NetworkManager())
             vc.currentUserInfo = model
             present(vc, animated: true)
         }

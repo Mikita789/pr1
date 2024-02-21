@@ -19,6 +19,8 @@
 		3805FF662B8393FC00719E20 /* UpdateStyleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF652B8393FC00719E20 /* UpdateStyleDelegate.swift */; };
 		3805FF692B84B1F000719E20 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF672B84B1F000719E20 /* DataModel.xcdatamodeld */; };
 		3805FF6B2B84B3C200719E20 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF6A2B84B3C200719E20 /* DataManager.swift */; };
+		3805FF6D2B85D80200719E20 /* NetwProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF6C2B85D80200719E20 /* NetwProtocol.swift */; };
+		3805FF6F2B85E88000719E20 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3805FF6E2B85E88000719E20 /* .swiftlint.yml */; };
 		38BA66592B68D5F8006F39A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA66582B68D5F8006F39A0 /* AppDelegate.swift */; };
 		38BA665B2B68D5F8006F39A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA665A2B68D5F8006F39A0 /* SceneDelegate.swift */; };
 		38BA665D2B68D5F8006F39A0 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA665C2B68D5F8006F39A0 /* AuthView.swift */; };
@@ -50,6 +52,8 @@
 		3805FF652B8393FC00719E20 /* UpdateStyleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStyleDelegate.swift; sourceTree = "<group>"; };
 		3805FF682B84B1F000719E20 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		3805FF6A2B84B3C200719E20 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		3805FF6C2B85D80200719E20 /* NetwProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwProtocol.swift; sourceTree = "<group>"; };
+		3805FF6E2B85E88000719E20 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		38BA66552B68D5F8006F39A0 /* pr1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pr1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38BA66582B68D5F8006F39A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38BA665A2B68D5F8006F39A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 				38BA66612B68D5FA006F39A0 /* Assets.xcassets */,
 				38BA66662B68D5FA006F39A0 /* Info.plist */,
 				38BA66B72B6CDB0A006F39A0 /* CustomTabBar.swift */,
+				3805FF6E2B85E88000719E20 /* .swiftlint.yml */,
 				3805FF672B84B1F000719E20 /* DataModel.xcdatamodeld */,
 			);
 			path = pr1;
@@ -199,6 +204,7 @@
 			children = (
 				38BA66BF2B6CFC60006F39A0 /* NetworkManager.swift */,
 				38BA66C12B6CFCDA006F39A0 /* EndPointsEnum.swift */,
+				3805FF6C2B85D80200719E20 /* NetwProtocol.swift */,
 			);
 			path = NetwLayer;
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 				38BA66512B68D5F8006F39A0 /* Sources */,
 				38BA66522B68D5F8006F39A0 /* Frameworks */,
 				38BA66532B68D5F8006F39A0 /* Resources */,
+				3805FF702B85E96200719E20 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -270,12 +277,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3805FF6F2B85E88000719E20 /* .swiftlint.yml in Resources */,
 				38BA66652B68D5FA006F39A0 /* LaunchScreen.storyboard in Resources */,
 				38BA66622B68D5FA006F39A0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3805FF702B85E96200719E20 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		38BA66512B68D5F8006F39A0 /* Sources */ = {
@@ -299,6 +327,7 @@
 				3805FF662B8393FC00719E20 /* UpdateStyleDelegate.swift in Sources */,
 				3805FF632B836D8700719E20 /* SettingsViewController.swift in Sources */,
 				38BA66B42B6CD2D8006F39A0 /* PhotosCollectionViewController.swift in Sources */,
+				3805FF6D2B85D80200719E20 /* NetwProtocol.swift in Sources */,
 				38BA66B02B6CBD7A006F39A0 /* FriendsCellPrototype.swift in Sources */,
 				3805FECD2B75099400719E20 /* ContactsModel.swift in Sources */,
 				38BA66AE2B6CBCF3006F39A0 /* FriendsTableViewController.swift in Sources */,

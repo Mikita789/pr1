@@ -9,7 +9,7 @@ import UIKit
 
 final class ProfileViewController: UIViewController {
     var delegate: UpdateStyleDelegate?
-    private let nwm = NetworkManager()
+    let nwm: NetwProtocolProfile
     var currentUserInfo: ProfileInfo?
     private var nameLabel = UILabel()
     private var profileImage = UIImageView()
@@ -22,8 +22,9 @@ final class ProfileViewController: UIViewController {
     
     private var sc = UISegmentedControl()
     
-    init(isContactProfile: Bool){
+    init(isContactProfile: Bool, nwm: NetwProtocolProfile){
         self.isContactProfile = isContactProfile
+        self.nwm = nwm
         super .init(nibName: nil, bundle: nil)
     }
     

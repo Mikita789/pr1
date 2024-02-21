@@ -28,15 +28,15 @@ final class CustomTabBar: UITabBarController {
     }
     
     private func createBaseTabBar(){
-        let fr = FriendsTableViewController()
+        let fr = FriendsTableViewController(nwm: nw)
         fr.currentUser = currentUser
         let friendsVC = UINavigationController(rootViewController: fr)
         
-        let gr = GroupsTableVCTableViewController()
+        let gr = GroupsTableVCTableViewController(nwm: nw)
         gr.currentUser = currentUser
         let groupsVC = UINavigationController(rootViewController: gr)
         
-        let photo = PhotosCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let photo = PhotosCollectionViewController(nwm: nw)
         photo.currentUser = currentUser
         let photosVC = UINavigationController(rootViewController: photo)
         
@@ -110,7 +110,7 @@ final class CustomTabBar: UITabBarController {
     }
     
     @objc func pushToProfile(){
-        let vc = ProfileViewController(isContactProfile: false)
+        let vc = ProfileViewController(isContactProfile: false, nwm: NetworkManager())
         vc.currentUserInfo = self.currentInfoItem
         vc.delegate = self
         vc.modalTransitionStyle = .flipHorizontal

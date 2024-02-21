@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class NetworkManager{
+class NetworkManager: NetwProtol, NetwProtocolContacts, NetwProtocolGroups, NetwProtocolPhotos, NetwProtocolProfile{
     func getArrPersID(_ count:Int)->String{
         var persArrId: [Int] = []
         for _ in 0..<count{
@@ -55,7 +55,7 @@ class NetworkManager{
         return res
     }
     
-    private func parseVKRes<T : Decodable>(_ data: Data, to type: T.Type) -> T?{
+    internal func parseVKRes<T : Decodable>(_ data: Data, to type: T.Type) -> T?{
         let decoder = JSONDecoder()
         guard let result = try? decoder.decode(T.self, from: data) else {
             print("DEBUG: - ERROR parse type: \(type)")
@@ -107,8 +107,7 @@ class NetworkManager{
             result(res, err)
         }.resume()
         print(url)
-    }
-    
+    }    
 }
 
 

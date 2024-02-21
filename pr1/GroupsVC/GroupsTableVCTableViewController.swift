@@ -11,7 +11,7 @@ final class GroupsTableVCTableViewController: UITableViewController {
     private var rc = UIRefreshControl()
 
     var currentUser: CurrentUser?
-    private var nw = NetworkManager()
+    var nw: NetwProtocolGroups
     private var groupsArr: [ItemGR] = []{
         didSet{
             DispatchQueue.main.async {
@@ -26,6 +26,16 @@ final class GroupsTableVCTableViewController: UITableViewController {
     }
         
     private var allGrFromData: [GroupDataModel] = []
+    
+    
+    init(nwm: NetwProtocolGroups){
+        self.nw = nwm
+        super .init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     override func loadView() {
