@@ -14,6 +14,7 @@ final class GroupsTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .clear
         createIcon()
         createGroupTitle()
         createDescrLabel()
@@ -58,7 +59,9 @@ final class GroupsTableViewCell: UITableViewCell {
             groupTitle.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.3),
             groupTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
         ])
-        groupTitle.font = .boldSystemFont(ofSize: 20)
+        groupTitle.font = CurrentSheme.shared.sh.font
+        groupTitle.textColor = CurrentSheme.shared.sh.textColor
+        groupTitle.backgroundColor = .clear
         groupTitle.textAlignment = .left
         groupTitle.numberOfLines = 1
     }
@@ -73,8 +76,17 @@ final class GroupsTableViewCell: UITableViewCell {
             groupDescription.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             groupDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
         ])
-        groupDescription.font = .preferredFont(forTextStyle: .body)
+        groupDescription.font = CurrentSheme.shared.sh.font
+        groupDescription.textColor = CurrentSheme.shared.sh.textColor
+        groupDescription.backgroundColor = .clear
         groupDescription.textAlignment = .left
         groupDescription.numberOfLines = 1
+    }
+    
+    func updateStyle(){
+        groupTitle.font = CurrentSheme.shared.sh.font
+        groupTitle.textColor = CurrentSheme.shared.sh.textColor
+        groupDescription.font = CurrentSheme.shared.sh.font
+        groupDescription.textColor = CurrentSheme.shared.sh.textColor
     }
 }

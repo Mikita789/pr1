@@ -40,5 +40,4 @@ final class PrototypeCollectionViewCell: UICollectionViewCell {
         photoView.layer.shadowColor = UIColor.red.cgColor
     }
     
-    
 }

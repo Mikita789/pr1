@@ -16,6 +16,7 @@ final class FriendsCellPrototype: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .clear
         createAvatar()
         addIsOnlineLabel()
         createNameLabel()
@@ -78,9 +79,17 @@ final class FriendsCellPrototype: UITableViewCell {
             nameLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.4),
             nameLabel.trailingAnchor.constraint(equalTo: isOnlineLabel.leadingAnchor, constant: -5)
         ])
-        nameLabel.font = .boldSystemFont(ofSize: 20)
+        nameLabel.font = CurrentSheme.shared.sh.font
+        nameLabel.textColor = CurrentSheme.shared.sh.textColor
+        nameLabel.backgroundColor = .clear
         nameLabel.textAlignment = .left
         nameLabel.numberOfLines = 1
+    }
+    
+    func updateStyle(){
+        nameLabel.font = CurrentSheme.shared.sh.font
+        nameLabel.textColor = CurrentSheme.shared.sh.textColor
+
     }
     
 }

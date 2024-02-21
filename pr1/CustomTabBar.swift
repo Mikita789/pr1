@@ -57,6 +57,8 @@ final class CustomTabBar: UITabBarController {
                                          tag: 2)
         photosVC.tabBarItem = photosVCItem
         
+        
+        
         addProfileButton([friendsVC, groupsVC, photosVC])
         
         self.viewControllers = [friendsVC, groupsVC, photosVC]
@@ -70,7 +72,7 @@ final class CustomTabBar: UITabBarController {
     // MARK: - Create profile Button
     private func addProfileButton(_ vcs: [UINavigationController]){
         if let currentUser = currentUser{
-            nw.getCurrentProfileInfo(currentUser.token, currentUser.id) { [weak self] info in
+            nw.getCurrentProfileInfo(currentUser.token, currentUser.id) { [weak self] info, err in
                 self?.currentInfoItem = info
                 self?.nw.loadImage(info.response.photo200) {image in
                     DispatchQueue.main.async{
@@ -108,9 +110,23 @@ final class CustomTabBar: UITabBarController {
     }
     
     @objc func pushToProfile(){
-        let vc = ProfileViewController()
+        let vc = ProfileViewController(isContactProfile: false)
         vc.currentUserInfo = self.currentInfoItem
+        vc.delegate = self
         vc.modalTransitionStyle = .flipHorizontal
         self.present(vc, animated: true)
+    }
+}
+
+
+extension CustomTabBar: UpdateStyleDelegate{
+    func updateStyle() {
+        if let viewControllers = viewControllers{
+            for vc in viewControllers{
+                if let vc = vc as? UpdateStyleDelegate{
+                    vc.updateStyle()
+                }
+            }
+        }
     }
 }

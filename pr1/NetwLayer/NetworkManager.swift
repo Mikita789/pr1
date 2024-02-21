@@ -57,7 +57,7 @@ class NetworkManager{
     
     private func parseVKRes<T : Decodable>(_ data: Data, to type: T.Type) -> T?{
         let decoder = JSONDecoder()
-        guard let result = try? decoder.decode(T.self, from: data) else { 
+        guard let result = try? decoder.decode(T.self, from: data) else {
             print("DEBUG: - ERROR parse type: \(type)")
             return nil
         }
@@ -65,57 +65,50 @@ class NetworkManager{
     }
     
     // MARK: - fetch contacts
-    func getContact(_ token: String, _ userID: String, result: @escaping (Contacts)->()){
+    func getContact(_ token: String, _ userID: String, result: @escaping (Contacts, Error?)->()){
         guard let url = VKEndPoints.getContacts.getURL(token: token, id: userID) else { return }
         
         URLSession.shared.dataTask(with: url) { data, resp, err in
-            if err == nil{
-                guard let data = data else { return }
-                guard let res = self.parseVKRes(data, to: Contacts.self) else { return }
-                result(res)
-            }
+            guard let data = data else { return }
+            guard let res = self.parseVKRes(data, to: Contacts.self) else { return }
+            result(res, err)
         }.resume()
     }
     
     // MARK: - fetch groups
-    func getAllGroups(_ token: String, _ userID: String, result: @escaping (Groups)->()){
+    func getAllGroups(_ token: String, _ userID: String, result: @escaping (Groups, Error?)->()){
         guard let url = VKEndPoints.getGroups.getURL(token: token, id: userID) else { return }
         
         URLSession.shared.dataTask(with: url) { data, resp, err in
-            if err == nil{
-                guard let data = data else {return}
-                guard let res = self.parseVKRes(data, to: Groups.self) else { return }
-                result(res)
-            }
+            guard let data = data else {return}
+            guard let res = self.parseVKRes(data, to: Groups.self) else { return }
+            result(res, err)
         }.resume()
         
     }
     
     // MARK: - fetch photos
-    func getAllphotoUser(_ token: String, _ userID: String, result: @escaping (Photos)->()){
+    func getAllphotoUser(_ token: String, _ userID: String, result: @escaping (Photos, Error?)->()){
         guard let url = VKEndPoints.getPhotos.getURL(token: token, id: userID) else { return }
         
         URLSession.shared.dataTask(with: url) { data, resp, err in
-            guard err == nil else { return }
             guard let data = data else { return }
             guard let res = self.parseVKRes(data, to: Photos.self) else { return }
-            result(res)
+            result(res, err)
         }.resume()
     }
     
-    func getCurrentProfileInfo(_ token: String, _ userID: String, result: @escaping (ProfileInfo)->()) {
+    func getCurrentProfileInfo(_ token: String, _ userID: String, result: @escaping (ProfileInfo, Error?)->()) {
         guard let url = VKEndPoints.getProfileInfo.getURL(token: token, id: userID) else { return }
         
         URLSession.shared.dataTask(with: url) { data, resp, err in
-            if err == nil{
-                guard let data = data else { return }
-                guard let res = self.parseVKRes(data, to: ProfileInfo.self) else { return }
-                result(res)
-            }
+            guard let data = data else { return }
+            guard let res = self.parseVKRes(data, to: ProfileInfo.self) else { return }
+            result(res, err)
         }.resume()
         print(url)
     }
-
+    
 }
 
 

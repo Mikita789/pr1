@@ -27,13 +27,20 @@ final class PhotosCollectionViewController: UICollectionViewController {
         self.title = "Photos"
         navigationController?.navigationBar.prefersLargeTitles = true
         printAllPhoto()
+        view.backgroundColor = CurrentSheme.shared.sh.bkColor
+        updateColorSh()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateColorSh()
     }
     
     
     //MARK: - get all photos
     private func printAllPhoto(){
         if let currentUser = currentUser{
-            nw.getAllphotoUser(currentUser.token, currentUser.id) { res in
+            nw.getAllphotoUser(currentUser.token, currentUser.id) { res, err in
                 for item in res.response.items{
                     let y = item.sizes.filter{$0.type == "x"}
                     self.photoURLArr.append(y.first?.url)
@@ -76,6 +83,19 @@ final class PhotosCollectionViewController: UICollectionViewController {
         }
         
         return cell
+    }
+    
+    private func updateColorSh(){
+        view.backgroundColor = CurrentSheme.shared.sh.bkColor
+        collectionView.backgroundColor = CurrentSheme.shared.sh.bkColor
+    }
+    
+    
+}
+
+extension PhotosCollectionViewController: UpdateStyleDelegate{
+    func updateStyle() {
+        self.updateColorSh()
     }
     
     

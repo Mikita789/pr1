@@ -14,6 +14,11 @@
 		3805FED52B7A26AA00719E20 /* FriendPersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FED42B7A26AA00719E20 /* FriendPersonModel.swift */; };
 		3805FF0B2B7DEB9700719E20 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF0A2B7DEB9700719E20 /* ProfileViewController.swift */; };
 		3805FF0D2B7DF3C400719E20 /* ProfileInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF0C2B7DF3C400719E20 /* ProfileInfoModel.swift */; };
+		3805FF612B836BF300719E20 /* CurrentSheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF602B836BF300719E20 /* CurrentSheme.swift */; };
+		3805FF632B836D8700719E20 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF622B836D8700719E20 /* SettingsViewController.swift */; };
+		3805FF662B8393FC00719E20 /* UpdateStyleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF652B8393FC00719E20 /* UpdateStyleDelegate.swift */; };
+		3805FF692B84B1F000719E20 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF672B84B1F000719E20 /* DataModel.xcdatamodeld */; };
+		3805FF6B2B84B3C200719E20 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3805FF6A2B84B3C200719E20 /* DataManager.swift */; };
 		38BA66592B68D5F8006F39A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA66582B68D5F8006F39A0 /* AppDelegate.swift */; };
 		38BA665B2B68D5F8006F39A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA665A2B68D5F8006F39A0 /* SceneDelegate.swift */; };
 		38BA665D2B68D5F8006F39A0 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA665C2B68D5F8006F39A0 /* AuthView.swift */; };
@@ -40,6 +45,11 @@
 		3805FED42B7A26AA00719E20 /* FriendPersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPersonModel.swift; sourceTree = "<group>"; };
 		3805FF0A2B7DEB9700719E20 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3805FF0C2B7DF3C400719E20 /* ProfileInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoModel.swift; sourceTree = "<group>"; };
+		3805FF602B836BF300719E20 /* CurrentSheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSheme.swift; sourceTree = "<group>"; };
+		3805FF622B836D8700719E20 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3805FF652B8393FC00719E20 /* UpdateStyleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStyleDelegate.swift; sourceTree = "<group>"; };
+		3805FF682B84B1F000719E20 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		3805FF6A2B84B3C200719E20 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		38BA66552B68D5F8006F39A0 /* pr1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pr1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38BA66582B68D5F8006F39A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38BA665A2B68D5F8006F39A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +109,24 @@
 			path = ProfileVC;
 			sourceTree = "<group>";
 		};
+		3805FF5F2B836BE300719E20 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3805FF602B836BF300719E20 /* CurrentSheme.swift */,
+				3805FF652B8393FC00719E20 /* UpdateStyleDelegate.swift */,
+				3805FF6A2B84B3C200719E20 /* DataManager.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3805FF642B836D8B00719E20 /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				3805FF622B836D8700719E20 /* SettingsViewController.swift */,
+			);
+			path = SettingsVC;
+			sourceTree = "<group>";
+		};
 		38BA664C2B68D5F8006F39A0 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +146,7 @@
 		38BA66572B68D5F8006F39A0 /* pr1 */ = {
 			isa = PBXGroup;
 			children = (
+				3805FF5F2B836BE300719E20 /* Helpers */,
 				38BA66C32B6D020A006F39A0 /* Models */,
 				38BA66BE2B6CFC29006F39A0 /* NetwLayer */,
 				38BA66582B68D5F8006F39A0 /* AppDelegate.swift */,
@@ -128,10 +157,12 @@
 				3805FF0E2B7F41CD00719E20 /* ProfileVC */,
 				38BA66B92B6CDC53006F39A0 /* PhotosVC */,
 				38BA66BD2B6CDC9F006F39A0 /* GroupsVC */,
+				3805FF642B836D8B00719E20 /* SettingsVC */,
 				38BA66632B68D5FA006F39A0 /* LaunchScreen.storyboard */,
 				38BA66612B68D5FA006F39A0 /* Assets.xcassets */,
 				38BA66662B68D5FA006F39A0 /* Info.plist */,
 				38BA66B72B6CDB0A006F39A0 /* CustomTabBar.swift */,
+				3805FF672B84B1F000719E20 /* DataModel.xcdatamodeld */,
 			);
 			path = pr1;
 			sourceTree = "<group>";
@@ -260,14 +291,19 @@
 				38BA66B62B6CD792006F39A0 /* PrototypeCollectionViewCell.swift in Sources */,
 				38BA66C02B6CFC60006F39A0 /* NetworkManager.swift in Sources */,
 				38BA66B82B6CDB0A006F39A0 /* CustomTabBar.swift in Sources */,
+				3805FF692B84B1F000719E20 /* DataModel.xcdatamodeld in Sources */,
+				3805FF612B836BF300719E20 /* CurrentSheme.swift in Sources */,
 				3805FF0B2B7DEB9700719E20 /* ProfileViewController.swift in Sources */,
 				38BA66BC2B6CDC9A006F39A0 /* GroupsTableVCTableViewController.swift in Sources */,
 				3805FED52B7A26AA00719E20 /* FriendPersonModel.swift in Sources */,
+				3805FF662B8393FC00719E20 /* UpdateStyleDelegate.swift in Sources */,
+				3805FF632B836D8700719E20 /* SettingsViewController.swift in Sources */,
 				38BA66B42B6CD2D8006F39A0 /* PhotosCollectionViewController.swift in Sources */,
 				38BA66B02B6CBD7A006F39A0 /* FriendsCellPrototype.swift in Sources */,
 				3805FECD2B75099400719E20 /* ContactsModel.swift in Sources */,
 				38BA66AE2B6CBCF3006F39A0 /* FriendsTableViewController.swift in Sources */,
 				3805FECF2B79FE3A00719E20 /* GroupsModel.swift in Sources */,
+				3805FF6B2B84B3C200719E20 /* DataManager.swift in Sources */,
 				3805FE882B73A74400719E20 /* CurrentUser.swift in Sources */,
 				38BA665B2B68D5F8006F39A0 /* SceneDelegate.swift in Sources */,
 				3805FF0D2B7DF3C400719E20 /* ProfileInfoModel.swift in Sources */,
@@ -493,6 +529,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3805FF672B84B1F000719E20 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3805FF682B84B1F000719E20 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 3805FF682B84B1F000719E20 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 38BA664D2B68D5F8006F39A0 /* Project object */;
 }
