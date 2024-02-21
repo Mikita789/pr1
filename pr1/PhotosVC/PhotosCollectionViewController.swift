@@ -49,13 +49,21 @@ final class PhotosCollectionViewController: UICollectionViewController {
     //MARK: - get all photos
     private func printAllPhoto(){
         if let currentUser = currentUser{
-            nw.getAllphotoUser(currentUser.token, currentUser.id) { res, err in
-                for item in res.response.items{
-                    let y = item.sizes.filter{$0.type == "x"}
-                    self.photoURLArr.append(y.first?.url)
-                }
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+            nw.getAllphotoUser(currentUser.token, currentUser.id) { res in
+                switch res {
+                case .success(let success):
+                    for item in success.response.items{
+                        let y = item.sizes.filter{$0.type == "x"}
+                        self.photoURLArr.append(y.first?.url)
+                    }
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                case .failure(let failure):
+                    let ac = UIAlertController(title: "Error", message: "Error load image", preferredStyle: .alert)
+                    let acA = UIAlertAction(title: "OK", style: .default)
+                    ac.addAction(acA)
+                    self.present(ac, animated: true)
                 }
             }
         }

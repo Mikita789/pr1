@@ -69,9 +69,16 @@ final class GroupsTableVCTableViewController: UITableViewController {
     //MARK: - print all groups
     private func getAllGroups(){
         if let currentUser = currentUser{
-            nw.getAllGroups(currentUser.token, currentUser.id) { [weak self] res, err in
-                if let err = err {
-                    let ac = UIAlertController(title: "Error load data", message: "\(err.localizedDescription)", preferredStyle: .alert)
+            nw.getAllGroups(currentUser.token, currentUser.id) { [weak self] res in
+                switch res {
+                case .success(let success):
+                    self?.groupsArr = success.response.items
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                        print("Загрузка из сети завершена")
+                    }
+                case .failure(let failure):
+                    let ac = UIAlertController(title: "Error load data", message: "\(failure.localizedDescription)", preferredStyle: .alert)
                     let acAction = UIAlertAction(title: "OK", style: .default){_ in
                         let ac2 = UIAlertController(title: "Error load data", message: "Возможна устаревшая информация", preferredStyle: .alert)
                         let acAction2 = UIAlertAction(title: "OK", style: .default)
@@ -80,12 +87,6 @@ final class GroupsTableVCTableViewController: UITableViewController {
                     }
                     ac.addAction(acAction)
                     self?.present(ac, animated: true)
-                }else{
-                    self?.groupsArr = res.response.items
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                        print("Загрузка из сети завершена")
-                    }
                 }
             }
         }

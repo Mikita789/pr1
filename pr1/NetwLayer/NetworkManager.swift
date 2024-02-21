@@ -55,56 +55,62 @@ class NetworkManager: NetwProtol, NetwProtocolContacts, NetwProtocolGroups, Netw
         return res
     }
     
-    internal func parseVKRes<T : Decodable>(_ data: Data, to type: T.Type) -> T?{
+    internal func parseVKRes<T : Decodable>(_ data: Data, to type: T.Type) -> Result<T, Error>{
         let decoder = JSONDecoder()
-        guard let result = try? decoder.decode(T.self, from: data) else {
-            print("DEBUG: - ERROR parse type: \(type)")
-            return nil
+        do{
+            let result = try decoder.decode(T.self, from: data)
+            return .success(result)
+        }catch{
+            return .failure(error)
         }
-        return result
+//        guard let result = try? decoder.decode(T.self, from: data) else {
+//            print("DEBUG: - ERROR parse type: \(type)")
+//            return
+//        }
+//        return result
     }
     
     // MARK: - fetch contacts
-    func getContact(_ token: String, _ userID: String, result: @escaping (Contacts, Error?)->()){
+    func getContact(_ token: String, _ userID: String, result: @escaping (Result<Contacts, Error>)->()){
         guard let url = VKEndPoints.getContacts.getURL(token: token, id: userID) else { return }
         
         URLSession.shared.dataTask(with: url) { data, resp, err in
             guard let data = data else { return }
-            guard let res = self.parseVKRes(data, to: Contacts.self) else { return }
-            result(res, err)
+            let res = self.parseVKRes(data, to: Contacts.self)
+            result(res)
         }.resume()
     }
     
     // MARK: - fetch groups
-    func getAllGroups(_ token: String, _ userID: String, result: @escaping (Groups, Error?)->()){
+    func getAllGroups(_ token: String, _ userID: String, result: @escaping (Result<Groups, Error>)->()){
         guard let url = VKEndPoints.getGroups.getURL(token: token, id: userID) else { return }
         
         URLSession.shared.dataTask(with: url) { data, resp, err in
             guard let data = data else {return}
-            guard let res = self.parseVKRes(data, to: Groups.self) else { return }
-            result(res, err)
+            let res = self.parseVKRes(data, to: Groups.self)
+            result(res)
         }.resume()
         
     }
     
     // MARK: - fetch photos
-    func getAllphotoUser(_ token: String, _ userID: String, result: @escaping (Photos, Error?)->()){
+    func getAllphotoUser(_ token: String, _ userID: String, result: @escaping (Result<Photos, Error>)->()){
         guard let url = VKEndPoints.getPhotos.getURL(token: token, id: userID) else { return }
         
         URLSession.shared.dataTask(with: url) { data, resp, err in
             guard let data = data else { return }
-            guard let res = self.parseVKRes(data, to: Photos.self) else { return }
-            result(res, err)
+            let res = self.parseVKRes(data, to: Photos.self)
+            result(res)
         }.resume()
     }
     
-    func getCurrentProfileInfo(_ token: String, _ userID: String, result: @escaping (ProfileInfo, Error?)->()) {
+    func getCurrentProfileInfo(_ token: String, _ userID: String, result: @escaping (Result<ProfileInfo, Error>)->()) {
         guard let url = VKEndPoints.getProfileInfo.getURL(token: token, id: userID) else { return }
         
         URLSession.shared.dataTask(with: url) { data, resp, err in
             guard let data = data else { return }
-            guard let res = self.parseVKRes(data, to: ProfileInfo.self) else { return }
-            result(res, err)
+            let res = self.parseVKRes(data, to: ProfileInfo.self)
+            result(res)
         }.resume()
         print(url)
     }    

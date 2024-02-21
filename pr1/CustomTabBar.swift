@@ -72,21 +72,29 @@ final class CustomTabBar: UITabBarController {
     // MARK: - Create profile Button
     private func addProfileButton(_ vcs: [UINavigationController]){
         if let currentUser = currentUser{
-            nw.getCurrentProfileInfo(currentUser.token, currentUser.id) { [weak self] info, err in
-                self?.currentInfoItem = info
-                self?.nw.loadImage(info.response.photo200) {image in
-                    DispatchQueue.main.async{
-                        let image = self?.resizeImage(image: image, targetSize: CGSize(width: 40, height: 40))
-                        let button = UIButton(type: .custom)
-                        button.clipsToBounds = true
-                        button.contentMode = .scaleAspectFit
-                        button.layer.cornerRadius = 40 / 2
-                        button.setBackgroundImage(image, for: .normal)
-                        button.addTarget(self, action: #selector(self?.pushToProfile), for: .touchUpInside)
-                        for vc in vcs{
-                            vc.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+            nw.getCurrentProfileInfo(currentUser.token, currentUser.id) { [weak self] res in
+                switch res {
+                case .success(let success):
+                    self?.currentInfoItem = success
+                    self?.nw.loadImage(success.response.photo200) {image in
+                        DispatchQueue.main.async{
+                            let image = self?.resizeImage(image: image, targetSize: CGSize(width: 40, height: 40))
+                            let button = UIButton(type: .custom)
+                            button.clipsToBounds = true
+                            button.contentMode = .scaleAspectFit
+                            button.layer.cornerRadius = 40 / 2
+                            button.setBackgroundImage(image, for: .normal)
+                            button.addTarget(self, action: #selector(self?.pushToProfile), for: .touchUpInside)
+                            for vc in vcs{
+                                vc.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+                            }
                         }
                     }
+                case .failure(let failure):
+                    let ac = UIAlertController(title: "Error", message: "error Load info", preferredStyle: .alert)
+                    let acA = UIAlertAction(title: "OK", style: .default)
+                    ac.addAction(acA)
+                    self?.present(ac, animated: true)
                 }
             }
         }else{

@@ -70,10 +70,18 @@ final class FriendsTableViewController: UITableViewController {
     
     private func loadFriendsVK() {
         if let currentUser = currentUser{
-            nw.getContact(currentUser.token , currentUser.id) { [weak self] res, err in
-                if let err = err {
-                    let ac = UIAlertController(title: "Error load data", message: "\(err.localizedDescription)", preferredStyle: .alert)
-                    let acAction = UIAlertAction(title: "OK", style: .default){_ in 
+            nw.getContact(currentUser.token , currentUser.id) { [weak self] res in
+                switch res {
+                case .success(let success):
+                    self?.friendsArr = success.response.items.map{FriendPersonModel($0)}
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                        print("Загрузка из сети завершена")
+                    }
+
+                case .failure(let failure):
+                    let ac = UIAlertController(title: "Error load data", message: "\(failure.localizedDescription)", preferredStyle: .alert)
+                    let acAction = UIAlertAction(title: "OK", style: .default){_ in
                         let ac2 = UIAlertController(title: "Error load data", message: "Возможна устаревшая информация", preferredStyle: .alert)
                         let acAction2 = UIAlertAction(title: "OK", style: .default)
                         ac2.addAction(acAction2)
@@ -81,13 +89,25 @@ final class FriendsTableViewController: UITableViewController {
                     }
                     ac.addAction(acAction)
                     self?.present(ac, animated: true)
-                }else{
-                    self?.friendsArr = res.response.items.map{FriendPersonModel($0)}
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                        print("Загрузка из сети завершена")
-                    }
                 }
+                
+//                if let err = err {
+//                    let ac = UIAlertController(title: "Error load data", message: "\(err.localizedDescription)", preferredStyle: .alert)
+//                    let acAction = UIAlertAction(title: "OK", style: .default){_ in 
+//                        let ac2 = UIAlertController(title: "Error load data", message: "Возможна устаревшая информация", preferredStyle: .alert)
+//                        let acAction2 = UIAlertAction(title: "OK", style: .default)
+//                        ac2.addAction(acAction2)
+//                        self?.present(ac2, animated: true)
+//                    }
+//                    ac.addAction(acAction)
+//                    self?.present(ac, animated: true)
+//                }else{
+//                    self?.friendsArr = res.response.items.map{FriendPersonModel($0)}
+//                    DispatchQueue.main.async {
+//                        self?.tableView.reloadData()
+//                        print("Загрузка из сети завершена")
+//                    }
+//                }
             }
         }
     }
